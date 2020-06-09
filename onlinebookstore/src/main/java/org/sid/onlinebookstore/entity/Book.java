@@ -12,10 +12,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 @Entity
 @Table(name="tbl_book")
 
-
+@ToString
 public class Book {
 	
 	@Id
@@ -28,7 +32,7 @@ public class Book {
 	
 	private String description;
 	
-	@Column(name="unite_price")
+	@Column(name="unit_price")
 	private BigDecimal unitPrice;
 	
 	@Column(name="image_url")
@@ -48,6 +52,11 @@ public class Book {
 	@ManyToOne
 	@JoinColumn(name="category_id", nullable=false)
 	private BookCategory category;
+
+	public Book() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Long getId() {
 		return id;
@@ -137,11 +146,6 @@ public class Book {
 		this.category = category;
 	}
 
-	public Book() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	public Book(String sku, String name, String description, BigDecimal unitPrice, String imageUrl, boolean active,
 			int unitsInStock, Date createdOn, Date updatedOn, BookCategory category) {
 		super();
@@ -156,6 +160,10 @@ public class Book {
 		this.updatedOn = updatedOn;
 		this.category = category;
 	}
+
+	
+
+	 
 	
 
 }
